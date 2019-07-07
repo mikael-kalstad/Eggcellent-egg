@@ -1,9 +1,5 @@
 // Constants for different egg boiling times
-const one = 100;
-const two = 120;
-const three = 140;
-const four = 165;
-const five = 180;
+const times = [1, 3, 2, 4, 1];
 
 let time = 55;
 
@@ -29,4 +25,3 @@ let formatTime = (num) => {
 
 // Run count function each second
 setInterval(count, 1000)
-

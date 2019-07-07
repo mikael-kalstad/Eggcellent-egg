@@ -1,0 +1,74 @@
+@import './master.css';
+
+body {
+    background-color: var(--main-blue);
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100vh;
+    align-items:center;
+    justify-items: center;
+}
+
+p {
+    margin: 0;
+    transition: transform 1s ease;
+}
+
+#status-wrapper {
+    font-size: 37px;
+    color: var(--main-white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+    top: 100px;
+}
+
+@media screen and (max-width: 600px) {
+    #status-wrapper {
+        font-size: 29px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #status-wrapper {
+        font-size: 23px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #status-wrapper {
+        font-size: 18px;
+    }
+}
+
+#status-msg {
+    position: relative;
+}
+
+#status {
+    position: relative;
+}
+
+#time {
+    font-size: 76px;
+    font-weight: 100;
+    color: var(--main-white);
+}
+
+#btn-right {
+    background-color: var(--main-black);
+}
+
+#btn-left {
+    background-color: var(--main-red);
+}
+
+#bell {
+    position: absolute;
+    opacity: 0;
+    height: 120px;
+    /* fill: var(--main-white); */
+    filter: invert(0.95);
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+}

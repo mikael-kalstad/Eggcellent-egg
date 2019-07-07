@@ -1,0 +1,80 @@
+@import "master.css";
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-blue);
+    display: grid;
+    grid-template-rows: 40% 60%;
+    min-height: 500px;
+    align-items:center;
+    justify-items: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 47px;
+    color: var(--main-yellow);
+}
+
+#selection-wrapper {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 40px;
+}
+
+
+@media screen and (max-width: 800px) {
+    h2 {
+        font-size: 37px;
+    }
+
+    #selection-wrapper {
+        box-sizing: border-box;
+        max-width: 100%;
+        padding: 30px;
+        margin-bottom: 30px;
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto;        
+    }
+
+    #selection-wrapper::-webkit-scrollbar {
+        height: 10px; 
+    }
+
+    /* The empty space “below” the progress bar. */
+    #selection-wrapper::-webkit-scrollbar-track {
+        /* background-color: #F5F5F5; */
+        border: 1px solid var(--main-white);
+        border-radius: 10px;
+        margin: 40px;
+    }
+
+    /*  The draggable scrolling element resizes depending on the size of the scrollable element. */
+    #selection-wrapper::-webkit-scrollbar-thumb {
+        background-color: var(--main-white);
+        border-radius: 10px;
+    }
+}
+
+.selection {
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.selection:hover {
+   transform: scale(1.1);
+}
+
+.img {
+    height: 125px;
+    display: block;
+    margin: auto;
+}
+
+.img-text {
+    font-size: 23px;
+    color: var(--main-white);
+    text-align: center;
+}
