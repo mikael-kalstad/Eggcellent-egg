@@ -19,8 +19,8 @@ p {
     color: var(--main-white);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 25px;
-    top: 100px;
+    grid-gap: 16px;
+    /* top: 100px; */
 }
 
 @media screen and (max-width: 600px) {
@@ -43,6 +43,8 @@ p {
 
 #status-msg {
     position: relative;
+    top: -2px;
+    font-weight: 100;
 }
 
 #status {
@@ -55,14 +57,6 @@ p {
     color: var(--main-white);
 }
 
-#btn-right {
-    background-color: var(--main-black);
-}
-
-#btn-left {
-    background-color: var(--main-red);
-}
-
 #bell {
     position: absolute;
     opacity: 0;
@@ -71,4 +65,12 @@ p {
     filter: invert(0.95);
     top: 0; left: 0; bottom: 0; right: 0;
     margin: auto;
+}
+
+#btn-right {
+    background-color: var(--main-black);
+}
+
+#btn-left {
+    background-color: var(--main-red);
 }

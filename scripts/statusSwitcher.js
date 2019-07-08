@@ -92,34 +92,31 @@ let count = () => {
         // document.getElementById('time').style = "color: var(--main-red)";
         
         // Start warning 
-        showWarning();
+        toggleWarning(true);
     }
 }
 
-let showWarning = () => {
+let toggleWarning = show => {
     // Change background color
     let body = document.getElementsByTagName('body')[0];
     body.style.transition = "all 500ms ease";
-    body.style.backgroundColor = "var(--main-red)";
+    body.style.backgroundColor = show? "var(--main-red)" : "var(--main-blue)";
     
-    changeBtn("btn-left", "Okay", "green");
-    changeBtn("btn-right", "Continue", "yellow");
-
-    document.getElementById("time").style.opacity = 0;
-    document.getElementById("bell").style.opacity = 1;
-
-    leftBtn.onclick = () => {
-        // Change to menu...
-        console.log("something");
+    if (show) {
+        convertSplitBtn("btn-left", false);
+        changeBtn("btn-left", "Stop", "yellow");
+    } else {
+        convertSplitBtn("btn-left", true);
+        changeBtn("btn-left", "Stop", "red");
+        changeBtn("btn-right", "Menu", "black");
     }
 
-    rightBtn.onclick = () => {
-        hideWarning();
-    }
-}
+    document.getElementById("time").style.opacity = show? 0 : 1;
+    document.getElementById("bell").style.opacity = show ? 1 : 0;
 
-let hideWarning = () => {
-    // Opposite of above... uuhh
+    show ? toogleStopResumeBtn(false) : toogleStopResumeBtn(true);
+
+    let leftBtn = document.getElementById("btn-left");
 }
 
 let changeBtn = (id, msg, color) => {
@@ -128,8 +125,19 @@ let changeBtn = (id, msg, color) => {
     btn.textContent = msg;
 }
 
+// Change between a full btn and a split btn
+// False = no split, True = a split btn
+let convertSplitBtn = (btn_left_id, split) => {
+    let leftBtn = document.getElementById(btn_left_id);
+    if (split) leftBtn.removeAttribute("style");
+    else {
+        leftBtn.style.width = leftBtn.offsetWidth*2;
+        leftBtn.style.borderRadius = "30px";
+    }
+}
+
 // Format seconds into minutes and seconds
-let formatTime = (num) => {
+let formatTime = num => {
     let minutes = Math.floor(num/60);
     let seconds = num - minutes*60;
 
@@ -149,18 +157,29 @@ let intervalId = setInterval(count, 1000);
 let btn = document.getElementById("btn-left");
 let stop = false;
 
-btn.onclick = () => {
-    // Stop timer and change btn
-    if (!stop) {
-        clearInterval(intervalId);
-        stop = true;
-        changeBtn("btn-left", "Resume", "green");
-    } 
-    // Resume timer and change btn
-    else {
-        intervalId = setInterval(count, 1000);
-        stop = false;
-        changeBtn("btn-left", "Stop", "red");
+let toogleStopResumeBtn = show => {
+    if (show) {
+        console.log("btn shoudl work now!")
+        btn.onclick = () => {
+            // Stop timer and change btn
+            if (!stop) {
+                clearInterval(intervalId);
+                stop = true;
+                changeBtn("btn-left", "Resume", "green");
+            } 
+            // Resume timer and change btn
+            else {
+                intervalId = setInterval(count, 1000);
+                stop = false;
+                changeBtn("btn-left", "Stop", "red");
+            }
+        }
+    } else {
+        btn.onclick = () => {
+            toggleWarning(false);
+        }
     }
-   
 }
+
+// Default value on page load
+toogleStopResumeBtn(true);
