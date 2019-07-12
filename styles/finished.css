@@ -1,1 +1,33 @@
-@import './master.css';
+@import 'master.css';
+
+body {
+    background-color: var(--main-yellow);
+}
+
+h2 {
+    color: var(--main-black);
+    font-size: 37px;
+}
+
+#egg {
+    height: 150px;
+    margin: auto;
+    animation: eggDrop 550ms 1500ms;
+    animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333);
+    animation-fill-mode: forwards;
+    position: absolute;
+} 
+
+p {
+    font-size: 23px;
+    font-weight: 300;
+}
+
+@keyframes eggDrop {
+    0% {
+        top: 0px;
+    }
+    100% {
+        top: 600px;
+    }
+}

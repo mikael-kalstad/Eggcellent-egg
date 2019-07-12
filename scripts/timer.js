@@ -1,16 +1,42 @@
-// Constants for different egg boiling times
-const times = [1, 3, 2, 4, 1];
+// Get type value from url 
+let type = window.location.search.slice(1).split('=')[1];
 
-let time = 55;
+// Different egg boiling times
+const times = [240, 360, 480, 600, 720];
 
-// Function that will increase time with one second
+let timeIndex = 0;
+let targetTime = times[type-1];
+let time = 0;
+let overtime = false;
+
+// Function that will increase time every second
 let count = () => {
     time++;
-    document.getElementById("title").innerHTML = formatTime(time);
+
+    // Check if overtime is activated
+    overtime ? targetTime++ : targetTime--;
+
+    // Update time on page
+    document.getElementById("time").innerHTML = 
+    overtime? "+ " + formatTime(targetTime) : "" + formatTime(targetTime);
+
+    // Check if list should update
+    if (time >= times[timeIndex] && timeIndex !== times.length) {
+        nextInList();
+        timeIndex++;
+    }
+
+    // Activate overtime if time hits zero
+    if (targetTime === 0) {
+        overtime = true;
+
+        // Start warning 
+        toggleWarning(true);
+    }
 }
 
-// Function for formatting seconds into minutes and seconds
-let formatTime = (num) => {
+// Format seconds into minutes and seconds
+let formatTime = num => {
     let minutes = Math.floor(num/60);
     let seconds = num - minutes*60;
 
@@ -23,5 +49,5 @@ let formatTime = (num) => {
     return minutes + " : " + seconds;
 }
 
-// Run count function each second
-setInterval(count, 1000)
+// Run count function each second and save interval id for stop
+let intervalId = setInterval(count, 1000);
