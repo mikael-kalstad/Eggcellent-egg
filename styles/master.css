@@ -48,8 +48,6 @@ h2 {
 #btn-wrapper {
     margin: auto;
     position: relative;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr; */
     width: 350px;
     height: 70px;
 }
@@ -58,8 +56,10 @@ h2 {
     outline: none;
     border: none;
     cursor: pointer;
+    margin: auto;
     font-size: 23px;
     font-weight: bold;
+    background-color: var(--main-black);
     color: white;
     border-radius: 30px;
     padding: 0;
@@ -71,6 +71,10 @@ h2 {
 }
 
 .btn:hover {
+    filter: brightness(90%);
+}
+
+.btn:focus {
     filter: brightness(90%);
 }
 
@@ -95,6 +99,10 @@ h2 {
         font-size: 37px;
     }
 
+    .btn {
+        width: 300px;
+    }
+
     #btn-left {
         width: 150px;
     }
@@ -111,6 +119,10 @@ h2 {
 }
 
 @media screen and (max-width: 340px) {
+    .btn {
+        width: 260px;
+    }
+
     #btn-left {
         width: 130px;
     }

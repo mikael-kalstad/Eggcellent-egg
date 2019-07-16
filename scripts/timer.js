@@ -2,7 +2,8 @@
 let type = window.location.search.slice(1).split('=')[1];
 
 // Different egg boiling times
-const times = [240, 360, 480, 600, 720];
+//240
+const times = [6, 360, 480, 600, 720];
 
 let timeIndex = 0;
 let targetTime = times[type-1];

@@ -73,7 +73,13 @@ let toggleWarning = show => {
     
     if (show) {
         convertSplitBtn("btn-left", false);
-        changeBtn("btn-left", "Stop", "yellow");
+        changeBtn("btn-left", "Finish", "green");
+
+
+        // Redirect to finished page on click
+        document.getElementById("btn-left").onclick = () => {
+            window.location.href = "finished.html";
+        }
     } else {
         convertSplitBtn("btn-left", true);
         changeBtn("btn-left", "Stop", "red");
@@ -125,9 +131,9 @@ let toogleStopResumeBtn = show => {
             }
         }
     } else {
-        btn.onclick = () => {
-            toggleWarning(false);
-        }
+        // btn.onclick = () => {
+        //     toggleWarning(false);
+        // }
     }
 }
 

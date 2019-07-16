@@ -2,32 +2,88 @@
 
 body {
     background-color: var(--main-yellow);
+    height: 100vh;
+    min-height: 500px;
+    display: grid;
+    grid-template-rows: 1fr 1fr minmax(200px, 1fr);
+    align-items: center;
+    box-sizing: border-box;
 }
 
 h2 {
-    color: var(--main-black);
+    color: var(--main-blue);
     font-size: 37px;
 }
 
+#egg-wrapper {
+    position: relative;
+}
+
 #egg {
+    position: absolute;
+    z-index: -1;
     height: 150px;
     margin: auto;
-    animation: eggDrop 550ms 1500ms;
+    left: 0; right: 0; top: 0; bottom: 0;
+    animation: eggDrop 500ms 1500ms;
     animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333);
     animation-fill-mode: forwards;
-    position: absolute;
-} 
-
-p {
-    font-size: 23px;
-    font-weight: 300;
 }
 
 @keyframes eggDrop {
-    0% {
-        top: 0px;
+    from {top: 0px;}
+    to {top: 500px;}
+}
+
+#text {
+    padding: 0 20px;
+    text-align: center;
+    font-size: 23px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeAppear 1200ms 2700ms ease;
+    animation-fill-mode: forwards;
+}
+
+#btn-menu {
+    opacity: 0;
+    left: 0; right: 0; top: 0; bottom: 0;
+    animation: fadeAppear 1s 7s ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeAppear {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeDissappear {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+#pot {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    #egg {
+        height: 130px;
     }
-    100% {
-        top: 600px;
+    
+    #pot {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #egg {
+        height: 110px;
+    }
+    
+    #pot {
+        width: 300px;
     }
 }
